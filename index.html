@@ -9,42 +9,71 @@
   <body>
     <script>
       function computerPlay() {
+        // generates and returns a random choice between 'rock'
+        // 'paper', and 'scissors'
         let rps = ['rock', 'paper', 'scissors'];
         let computerChoice = rps[Math.floor(Math.random() * 3)];
-        console.log(computerChoice);
         return computerChoice;
       }
 
       function playerPlay() {
+        // prompts for user choice between 'rock', 'paper', 
+        // 'scissors' and returns value
         return prompt("Rock, Paper, or Scissors?").toLocaleLowerCase();
       }
 
-      function game(computerPlay, playerPlay) {
-        if (computerPlay === 'rock') {
-          if (playerPlay === 'rock') {
-            console.log('Draw!');
+      function evaluateRPS(computerMove, playerMove) {
+        // evaluates who wins in a round of Rock Paper Scissors
+        // console.log()'s moves and returns 'computer', 'player', 
+        // or 'draw'
+
+        console.log(`Player: ${playerMove}. Computer: ${computerMove}`)
+        if (computerMove === 'rock') {
+          if (playerMove === 'rock') {
+            return 'draw';
           } else {
-            (playerPlay === 'paper') ?
-            console.log('You win! Paper beats rock!') : console.log('You Lose. Rock beats Scissors!');
+            return (playerMove === 'paper') ?
+            'player' : 'computer';
           }
-        } else if (computerPlay === 'paper') {
-          if (playerPlay === 'paper') {
-            console.log('Draw!');
+        } else if (computerMove === 'paper') {
+          if (playerMove === 'paper') {
+            return 'draw';
           } else {
-            (playerPlay === 'scissors') ?
-            console.log('You Win! Scissors beats paper.'): console.log('You Lose. Paper beats Rock.');
+            return (playerMove === 'scissors') ?
+            'player.' : 'computer';
           }
-        }else if (computerPlay === 'scissors') {
-          if (playerPlay === 'scissors') {
-            console.log('Draw!');
+        } else if (computerMove === 'scissors') {
+          if (playerMove === 'scissors') {
+            return 'draw';
           } else {
-            (playerPlay === 'rock') ?
-            console.log('You Win! Rock beats Scissors') : console.log('You lose. Scissors beats paper!');
+            return (playerMove === 'rock') ?
+            'player' : 'computer';
           }
         }
       }
-      
-      game(computerPlay(), playerPlay());
+
+      function game() {
+        // manages game of rock paper scissors
+        let playerScore = 0;
+        let computerScore = 0;
+        let drawCount = 0;
+
+        for (let i = 0; i < 5; i++) {
+          let result = evaluateRPS(computerPlay(), playerPlay());
+          if (result === 'draw') {
+            ++drawCount;
+            console.log(result);
+          } else if (result == 'player') {
+            ++playerScore;
+            console.log(`${result} wins!`);
+          } else {
+            ++computerScore;
+            console.log(`${result} wins!`);
+          }
+          console.log(`Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
+        }
+      }
+      game();
     </script>
   </body>
 </html>
