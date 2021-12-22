@@ -59,16 +59,18 @@
         let drawCount = 0;
 
         for (let i = 0; i < 5; i++) {
-          let result = evaluateRPS(computerPlay(), playerPlay());
+          let computerMove = computerPlay();
+          let playerMove = playerPlay();
+          let result = evaluateRPS(computerMove, playerMove);
           if (result === 'draw') {
             ++drawCount;
             console.log(result);
           } else if (result == 'player') {
             ++playerScore;
-            console.log(`${result} wins!`);
+            console.log(`${result} wins! ${playerMove} beats ${computerMove}.`);
           } else {
             ++computerScore;
-            console.log(`${result} wins!`);
+            console.log(`${result} wins! ${computerMove} beats ${playerMove}.`);
           }
           console.log(`Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
         }
