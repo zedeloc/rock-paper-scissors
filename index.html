@@ -23,10 +23,31 @@
             } else {
                 alert("You may have made a spelling error");
                 getPlayerChoice();
-            }
+            }  
+        }
 
-            
-            
+        function evaluatePlayerVsComputer(player, computer){
+            if (player === computer) {
+                return undefined;
+            } else if (player === "rock") {
+                if (computer === "paper") {
+                    return false ;
+                } else {
+                    return true;
+                }
+            } else if (player === "paper") {
+                if (computer === "rock") {
+                    return true ; 
+                } else {
+                    return false;
+                }
+            } else if (player === "scissors") {
+                if (computer === "rock") {
+                    return false;
+                }else {
+                    return true;
+                }
+            }
         }
 
 
