@@ -50,6 +50,22 @@
             }
         }
 
+        function rockPaperScissors() {
+            const player = getPlayerChoice();
+            const computer = getComputerChoice();
+
+            console.log(`You chose: ${player}...\nComputer chose: ${computer}\n\nEvaluating...`);
+            
+            if (evaluatePlayerVsComputer(player, computer) === undefined) {
+                console.log("Tie");
+                rockPaperScissors();
+            } else if (evaluatePlayerVsComputer(player, computer) === true) {
+                console.log(`You win!!!\n${player} beats ${computer}!!!`);
+            } else if (evaluatePlayerVsComputer(player, computer) === false) {
+                console.log(`You lose!!!\n${computer} beats ${player}!!!`);
+            }
+        }
+
 
 
     </script>
