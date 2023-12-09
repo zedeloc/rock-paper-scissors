@@ -7,9 +7,30 @@
 </head>
 <body>
     <script>
+        function getComputerChoice() {
+            const RPS = ['rock', 'paper', 'scissors'];
+            const getRanNum = Math.floor(Math.random() * 3);
+            return RPS[getRanNum];
+        }
+
+        function getPlayerChoice() {
+            playerChoice = prompt("Choose Rock, Paper, or Scissors: ").trim().toLowerCase();
+            
+            if (playerChoice === "rock"
+            || playerChoice === "paper"
+            || playerChoice === "scissors") {
+                return playerChoice;
+            } else {
+                alert("You may have made a spelling error");
+                getPlayerChoice();
+            }
+
+            
+            
+        }
 
 
-        
+
     </script>
 </body>
 </html>
