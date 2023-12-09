@@ -57,7 +57,7 @@
             console.log(`You chose: ${player}...\nComputer chose: ${computer}\n\nEvaluating...`);
             
             if (evaluatePlayerVsComputer(player, computer) === undefined) {
-                console.log("Tie");
+                console.log("Tie\n... COMMENCING REDO SEQUENCE");
                 rockPaperScissors();
             } else if (evaluatePlayerVsComputer(player, computer) === true) {
                 console.log(`You win!!!\n${player} beats ${computer}!!!`);
