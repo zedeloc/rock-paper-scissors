@@ -14,7 +14,7 @@
         }
 
         function getPlayerChoice() {
-            playerChoice = prompt("Choose Rock, Paper, or Scissors: ").trim().toLowerCase();
+            let playerChoice = prompt("Choose Rock, Paper, or Scissors: ").trim().toLowerCase();
             
             if (playerChoice === "rock"
             || playerChoice === "paper"
@@ -22,7 +22,7 @@
                 return playerChoice;
             } else {
                 alert("You may have made a spelling error");
-                getPlayerChoice();
+                return getPlayerChoice();
             }  
         }
 
@@ -66,7 +66,13 @@
             }
         }
 
+        function game() {
+            for (let i = 0; i < 5; i++){
+                rockPaperScissors();
+            }
+        }
 
+        game();
 
     </script>
 </body>
