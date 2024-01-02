@@ -6,28 +6,63 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Rock Paper Scissors</h1>
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
+    <div id="container"></div>
+
     <script>
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        const container = document.querySelector("#container");
+
+        let message = document.createElement('div');
+        message.textContent = 'Make your choice';
+
+        let finalOutcome = document.createElement('h2');
+
+        let playerDiv = document.createElement('div');
+        playerDiv.textContent = `Player Score: ${playerScore}`
+
+        let computerDiv = document.createElement('div');
+        computerDiv.textContent = `Computer Score: ${computerScore}`;
+
+        container.appendChild(message);
+        container.appendChild(playerDiv);
+        container.appendChild(computerDiv);
+
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', function (e) {
+                rockPaperScissors(e.target.id);
+            })
+        })
+
+
         function getComputerChoice() {
             const RPS = ['rock', 'paper', 'scissors'];
             const getRanNum = Math.floor(Math.random() * 3);
             return RPS[getRanNum];
         }
 
-        function getPlayerChoice() {
-            let playerChoice = prompt("Choose Rock, Paper, or Scissors: ").trim().toLowerCase();
+        function getPlayerChoice(choice) {
+            let playerChoice = choice;
             
             if (playerChoice === "rock"
             || playerChoice === "paper"
             || playerChoice === "scissors") {
                 return playerChoice;
-            } else {
-                alert("You may have made a spelling error");
-                return getPlayerChoice();
-            }  
+            } 
         }
 
-        // If player wins, return true. If player loses, return false. 
-        // If there's a tie, return undefined.
+        // to return whether a player wins: true, loses: false, or there is a draw: undefined
         function evaluatePlayerVsComputer(player, computer){
             if (player === computer) {
                 return undefined;
@@ -52,29 +87,43 @@
             }
         }
 
-        function rockPaperScissors() {
-            const player = getPlayerChoice();
+        function rockPaperScissors(choice) {
+            const player = choice;
             const computer = getComputerChoice();
-
-            console.log(`You chose: ${player}...\nComputer chose: ${computer}\n\nEvaluating...`);
+            const declareChoices = `You chose: ${player}... \nComputer chose: ${computer}\n\nEvaluating...`;
+            
+            console.log(declareChoices);
             
             if (evaluatePlayerVsComputer(player, computer) === undefined) {
-                console.log("Tie\n... COMMENCING REDO SEQUENCE");
-                rockPaperScissors();
+                console.log("Tie");
+                message.textContent = "Tie";
             } else if (evaluatePlayerVsComputer(player, computer) === true) {
                 console.log(`You win!!!\n${player} beats ${computer}!!!`);
+                playerScore += 1
+                message.textContent = `You win!!!\n${player} beats ${computer}!!!`
+                playerDiv.textContent = `Player Score: ${playerScore}`
             } else if (evaluatePlayerVsComputer(player, computer) === false) {
                 console.log(`You lose!!!\n${computer} beats ${player}!!!`);
+                computerScore += 1;
+                message.textContent = `You lose!!!\n${computer} beats ${player}!!!`;
+                computerDiv.textContent = `Computer Score: ${computerScore}`
+            }
+
+            if (playerScore === 5) {
+                finalOutcome.textContent = "You won best out of 5";
+                container.appendChild(finalOutcome);
+            }
+
+            if (computerScore === 5) {
+                finalOutcome.textContent = "You lost best out of 5";
+                container.appendChild(finalOutcome);
             }
         }
 
         function game() {
-            for (let i = 0; i < 5; i++){
-                rockPaperScissors();
-            }
+            rockPaperScissors();
         }
 
-        game();
 
     </script>
 </body>
