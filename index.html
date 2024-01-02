@@ -22,6 +22,10 @@
 
         const container = document.querySelector("#container");
 
+        let playerAndComputerChoices = document.createElement('div');
+        playerAndComputerChoices.textContent = '';
+        container.appendChild(playerAndComputerChoices);
+
         let message = document.createElement('div');
         message.textContent = 'Make your choice';
 
@@ -90,9 +94,10 @@
         function rockPaperScissors(choice) {
             const player = choice;
             const computer = getComputerChoice();
-            const declareChoices = `You chose: ${player}... \nComputer chose: ${computer}\n\nEvaluating...`;
+            const declareChoices = `You chose: ${player}... \nComputer chose: ${computer}`;
             
             console.log(declareChoices);
+            playerAndComputerChoices.textContent = declareChoices;
             
             if (evaluatePlayerVsComputer(player, computer) === undefined) {
                 console.log("Tie");
@@ -119,11 +124,6 @@
                 container.appendChild(finalOutcome);
             }
         }
-
-        function game() {
-            rockPaperScissors();
-        }
-
 
     </script>
 </body>
