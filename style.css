@@ -14,8 +14,8 @@ body {
     margin-right: auto;
 }
 
-#user-choices,
-#dialog {
+#visual-description {
+    display: flex;
     flex-grow: 1;
     border: black 4px solid;
     margin: 40px;
@@ -23,13 +23,32 @@ body {
     min-height: 100px;
 }
 
+#user-choices {
+    display: flex;
+    justify-content: center;
+}
+
+#dialog {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.human-description,
+.computer-description {
+    text-align: center;
+    padding: 20px;
+}
+
+
 p {
     padding: 10px;
 }
 
 button {
     padding: 16px;
-    margin: 8px;
+    margin: 24px;
     background-color: black;
     color: lightcoral;
     border-radius: 10%;

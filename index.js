@@ -14,21 +14,34 @@ function getComputerChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+
 const dialog = document.querySelector("#dialog");
 dialog.textContent = "";
 
-const humanScoreDisp = document.querySelector("#human-score")
+const humanScoreDisp = document.querySelector("#human-score");
 humanScoreDisp.textContent = "";
 
-const computerScoreDisp = document.querySelector("#computer-score")
+const computerScoreDisp = document.querySelector("#computer-score");
 computerScoreDisp.textContent = "";
+
+const humanDescription = document.querySelector(".human-description");
+humanDescription.textContent = "You";
+
+const computerDescription = document.querySelector(".computer-description");
+computerDescription.textContent = "Computer";
+
+
+
+
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        
-        playRound(button.id, getComputerChoice());
+        let compChoi = getComputerChoice();
+        playRound(button.id, compChoi);
         displayScore()
+        humanDescription.textContent = `You choose ${button.id}!`;
+        computerDescription.textContent = `Computer choose ${compChoi}!`;
     }
 
     )
