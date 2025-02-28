@@ -16,10 +16,23 @@ body {
 
 #user-choices,
 #dialog {
-    align-self: center;
+    flex-grow: 1;
+    border: black 4px solid;
     margin: 40px;
+    text-align: center;
+    min-height: 100px;
 }
 
 p {
     padding: 10px;
+}
+
+button {
+    padding: 16px;
+    margin: 8px;
+    background-color: black;
+    color: lightcoral;
+    border-radius: 10%;
+    font-weight: bold;
+    font-size: 20px;
 }
