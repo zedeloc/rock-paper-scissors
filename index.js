@@ -28,6 +28,7 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         
         playRound(button.id, getComputerChoice());
+        displayScore()
     }
 
     )
