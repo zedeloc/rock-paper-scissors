@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    display: flex;
+    background-color: lightcoral;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
