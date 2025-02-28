@@ -1,6 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 #header {
@@ -11,4 +12,14 @@ body {
 .centered {
     margin-left: auto;
     margin-right: auto;
+}
+
+#user-choices,
+#dialog {
+    align-self: center;
+    margin: 40px;
+}
+
+p {
+    padding: 10px;
 }
